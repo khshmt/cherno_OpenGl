@@ -1,5 +1,5 @@
 #pragma once
-#include <renderer.hpp>
+#include <debugger.hpp>
 #include <vertexBuffer.hpp>
 #include <vertexBufferLayout.hpp>
 

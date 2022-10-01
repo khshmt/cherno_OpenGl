@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <renderer.hpp>
+#include <debugger.hpp>
 #include <unordered_map>
 struct ShaderProgramSources {
 	std::string vertexShader;

@@ -1,9 +1,10 @@
-#include <renderer.hpp>
+#include <debugger.hpp>
 #include <vertexBuffer.hpp>
 #include <indexBuffer.hpp>
 #include <GLFW/glfw3.h>
 #include <vertexArray.hpp>
 #include <shader.hpp>
+#include <renderer.hpp>
 
 const GLint WIDTH = 600, HEIGHT = 600;
 const std::string filePath = "../res/shaders/basic.shader";
@@ -67,16 +68,14 @@ int main() {
     vertexBuffer.Unbind();
 	indexBuffer.Unbind();
 
+	Renderer renderer;
+
 	float r=0.0, g=0.0, b=0.0;
 	while(!glfwWindowShouldClose(mainWindow)) {
-		GLCall(glClear(GL_COLOR_BUFFER_BIT));
+		renderer.clear();
 		shader.Bind(); //choose the program 
-		shader.setUniform4f("u_Color", r, g, b, 1.0f);
-		
-		va.Bind(); //bind the vertex array object
-		indexBuffer.Bind();
-		
-		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr)); // 6 is the number of indicies
+		shader.setUniform4f("u_Color", r, g, b, 1.0f);		
+		renderer.Draw(va, indexBuffer, shader);
 		GLCall(glfwSwapBuffers(mainWindow));
 		GLCall(glfwPollEvents());
 		if(r>1.0f) {
