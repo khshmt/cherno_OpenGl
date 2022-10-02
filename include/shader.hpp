@@ -21,6 +21,8 @@ public:
     void Bind() const;
     void unBind();
     void setUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
+    void setUniform1i(const std::string& name, int value);
+
 private:
     ShaderProgramSources parsesShader();
     unsigned int compileShader(unsigned int type, const std::string& source);
