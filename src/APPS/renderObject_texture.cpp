@@ -47,6 +47,9 @@ int main() {
 								  -0.5f, 0.5f, 0.0f, 1.0f}; //3
 	unsigned int indicies[] = {0, 1, 2,  //triangle 1 
 							   2, 3, 0}; // triangle 2
+	//Blending
+	GLCall(glEnable(GL_BLEND));
+	GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 	//vertex array object;
 	VertexArray va;
 	//vertex buffer
@@ -74,7 +77,7 @@ int main() {
 	indexBuffer.Unbind();
 
 	Renderer renderer;
-
+	
 	while(!glfwWindowShouldClose(mainWindow)) {
 		renderer.clear();
 		shader.Bind(); //choose the program 
